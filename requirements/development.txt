@@ -13,6 +13,13 @@ click==8.0.1
 decorator==5.0.9
     # via ipython
 django==3.2.3
+    # via
+    #   -r ./requirements/base.in
+    #   django-filter
+    #   djangorestframework
+django-filter==21.1
+    # via -r ./requirements/base.in
+djangorestframework==3.12.4
     # via -r ./requirements/base.in
 flake8==3.9.2
     # via
