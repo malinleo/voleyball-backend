@@ -32,6 +32,7 @@ class User(AbstractBaseUser, PermissionsMixin):
         last_login (datetime): Last date when user login to the system.
 
     """
+
     EMAIL_FIELD = 'email'
     USERNAME_FIELD = 'email'
 
@@ -74,6 +75,7 @@ class User(AbstractBaseUser, PermissionsMixin):
         return self.email
 
     def get_full_name(self):
+        """Construct and return full name."""
         full_name = '{first_name} {last_name}'.format(
             first_name=self.last_name,
             last_name=self.first_name,
@@ -82,6 +84,7 @@ class User(AbstractBaseUser, PermissionsMixin):
         return full_name.strip()
 
     def get_short_name(self):
+        """Construct and return short name."""
         return self.first_name
 
     def get_admin_change_url(self) -> str:
@@ -93,7 +96,6 @@ class User(AbstractBaseUser, PermissionsMixin):
             https://api.sitename.com/admin/users/user/234/
 
         """
-
         assert self.id, "Instance must have an ID"
 
         return urljoin(

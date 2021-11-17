@@ -12,11 +12,13 @@ from apps.users.models import User
 
 class RegisterView(CreateAPIView):
     """View to register new user."""
+
     queryset = User.objects.all()
     permission_classes = (permissions.AllowAny,)
     serializer_class = UserRegistrationSerializer
 
     def post(self, request, *args, **kwargs):
+        """Register new user if data is valid."""
         serializer = self.get_serializer(data=request.data)
         serializer.is_valid(raise_exception=True)
         serializer.save()

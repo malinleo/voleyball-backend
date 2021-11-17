@@ -7,6 +7,7 @@ from apps.users.models import User
 
 class UserRegistrationSerializer(serializers.ModelSerializer):
     """Serializer for user registration."""
+
     email = serializers.EmailField(
         help_text="Email of user which singing up.",
     )
@@ -59,6 +60,7 @@ class AuthTokenSerializer(serializers.Serializer):
     Copied form rest_framework.authtoken.serializers.AuthTokenSerializer
 
     """
+
     email = serializers.CharField(
         write_only=True,
         required=True,
@@ -71,6 +73,7 @@ class AuthTokenSerializer(serializers.Serializer):
     )
 
     def validate(self, attrs):
+        """Validate that user with provided credentials."""
         email = attrs.get("email")
         password = attrs.get("password")
 
